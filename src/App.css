@@ -1,0 +1,96 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    background-color: #EFEFEF;
+    height: 100vh;
+}
+
+/* Header */
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    flex: 1;
+}
+
+#logo-metro {
+    height: 8em;
+    border-radius: 2em;
+}
+
+.logo-metro {
+    display: flex;
+    width: 28rem;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #8f8c8c;
+}
+
+/* main */
+.main{
+    background-color: aqua;
+    flex: 6;
+}
+
+.container-form {
+    background-color: #E3824B;
+    margin-top: 20px !important;
+    border: 2px solid #2A5D50;
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.border-orange {
+    border-color: #E3824B;
+}
+
+.btn {
+    border: black;
+    background-color: #2A5D50 !important;
+}
+
+.color-primary {
+    color: #7D3649;
+}
+
+/*footer*/
+.footer {
+    background-color: black;
+    flex: 1;
+
+
+}
+
+
+/* mobile */
+@media only screen and (max-width: 600px) {
+    /*Header*/
+    .header-container {
+        height: 6em;
+    }
+
+    #logo-metro {
+        height: 4em;
+        border-radius: 1em;
+    }
+
+    .logo-metro {
+        width: 18rem;
+        height: 5em;
+    }
+
+    .fs-4 {
+        font-size: 12px !important;
+    }
+
+    /* main */
+    .container {
+        border: none;
+        border-radius: 0px;
+    }
+
+
+}
