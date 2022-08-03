@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 
 export function ContainerForm({addElements}) {
-    const [isChecked] = useState(false);
-    const initalValues = {
+    const [isChecked, setIsChecked] = useState(false);
+    const postData = {
         title: "",
         brief: "",
         content: "",
@@ -10,7 +10,7 @@ export function ContainerForm({addElements}) {
         isTopNew: isChecked,
         created_at: new Date()
     }
-    const [values, setValues] = useState(initalValues);
+    const [values, setValues] = useState(postData);
 
     function handlerChange(e) {
         const {name, value} = e.target;
@@ -18,23 +18,30 @@ export function ContainerForm({addElements}) {
             let arrayImages = [value];
             setValues({...values, [name]: arrayImages})
         }
-        else if (name === 'isTopNew' ){
-           setValues({...values, [name]:!isChecked})
+        else if (name === 'isTopNew'){
+            setValues({...values, [name]:!isChecked})
+            setIsChecked(!isChecked)
+            console.log(values)
         }
         else {
             setValues({...values, [name]: value})
         }
-        console.log(values)
-        console.log(isChecked)
     }
     function handlerSubmit(e) {
         e.preventDefault();
+        let date = new Date();
+        setValues({...values, ["created_at"]:date});
         addElements(values);
         e.target.reset();
+        setIsChecked(false)
     }
+
+
+
 
     return (
         <div>
+
             <form className='container' onSubmit={handlerSubmit}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Title</label>
@@ -54,16 +61,18 @@ export function ContainerForm({addElements}) {
                 <div className="mb-3">
                     <label htmlFor="exampleInputPassword1" className="form-label">images</label>
                     <input type="text" className="form-control" id="exampleInputPassword1" name="images"
-                           onChange={handlerChange}/>
+                           onChange={handlerChange} />
                 </div>
 
                 <div className="mb-3 form-check">
                     <input type="checkbox" className="form-check-input" id="exampleCheck1" name="isTopNew"
                            onChange={handlerChange}
+                           checked={isChecked}
                         />
-                    <label  className="form-check-label" htmlFor="exampleCheck1" >isTopNew</label>
+                    {isChecked ? isChecked : "NOT "}
+                    <label className="form-check-label" htmlFor="exampleCheck1" >isTopNew</label>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary" >Submit</button>
             </form>
         </div>
     )
