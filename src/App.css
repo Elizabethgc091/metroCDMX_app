@@ -31,8 +31,14 @@
 
 /* main */
 .main{
-    background-color: aqua;
     flex: 6;
+}
+.center{
+    display: flex;
+  justify-content: center;
+    align-items: center;
+    margin-top: 58px;
+
 }
 
 .container-form {
@@ -58,10 +64,18 @@
 
 /*footer*/
 .footer {
-    background-color: black;
+    background-color: #2A5D50;
     flex: 1;
-
-
+    color: #fff;
+}
+.d-flex{
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+a:link, a:visited, a:active{
+    text-decoration: none!important;
+    color: white;
 }
 
 

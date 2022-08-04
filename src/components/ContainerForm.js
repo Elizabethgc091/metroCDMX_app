@@ -2,14 +2,7 @@ import React, {useState} from "react";
 
 export function ContainerForm({addElements}) {
     const [isChecked, setIsChecked] = useState(false);
-    const postData = {
-        title: "",
-        brief: "",
-        content: "",
-        images: [],
-        isTopNew: isChecked,
-        created_at: new Date()
-    }
+    const postData = {}
     const [values, setValues] = useState(postData);
 
     function handlerChange(e) {
@@ -22,6 +15,10 @@ export function ContainerForm({addElements}) {
             setValues({...values, [name]:!isChecked})
             setIsChecked(!isChecked)
             console.log(values)
+        }else if(values!== ""){
+            setValues({...values,[name]:value})
+            console.log(values)
+
         }
         else {
             setValues({...values, [name]: value})
@@ -30,14 +27,14 @@ export function ContainerForm({addElements}) {
     function handlerSubmit(e) {
         e.preventDefault();
         let date = new Date();
-        setValues({...values,"created_at":date});
+        setValues({created_at:date});
         addElements(values);
         e.target.reset();
         setIsChecked(false)
     }
 
     return (
-        <div>
+        <div className='center'>
             <form className='container' onSubmit={handlerSubmit}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label color-primary">Título</label>
@@ -72,9 +69,6 @@ export function ContainerForm({addElements}) {
                     </div>
                     <div className="p-2"> <button type="submit" className="btn btn-primary" >Enviar</button></div>
                 </div>
-
-
-
             </form>
         </div>
     )
