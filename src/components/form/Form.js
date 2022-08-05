@@ -10,7 +10,7 @@ export function Form() {
         const colRef = collection(db, "news_v2")
         await addDoc(colRef, objets);
         await Swal.fire({
-            position: 'top-center',
+            position: 'top-start',
             icon: 'success',
             title: 'Noticia enviada',
             showConfirmButton: false,
